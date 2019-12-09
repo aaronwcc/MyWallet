@@ -1,0 +1,14 @@
+package com.example.mywallet
+
+import androidx.lifecycle.LiveData
+import androidx.room.Insert
+import androidx.room.Dao
+import androidx.room.Query
+
+@Dao
+interface InOutLogDao {
+    @Insert
+    suspend fun insertLog(inOutLog: InOutLog)
+    @Query("SELECT * FROM in_out_log")
+    suspend fun getLogs(): LiveData<List<InOutLog>>
+}
